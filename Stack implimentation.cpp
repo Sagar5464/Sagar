@@ -1,4 +1,5 @@
-#include "stacks.h"
+#include<iostream>
+#include "Stacks.H"
 
 int main() {
     Stack stack;
