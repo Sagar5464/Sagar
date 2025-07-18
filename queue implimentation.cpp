@@ -1,5 +1,6 @@
-#include "queues.h"
+
 #include <iostream>
+#include "queues.h"
 using namespace std;
 
 int main() {
