@@ -1,0 +1,1488 @@
+Lab Programs:
+============
+WEEK-1:
+1) Program to print "Hello world" in C
+Program-001:
+FileName: FirstProgram.c 
+
+#include<stdio.h>
+int main()
+{
+   printf("Hello World\n");
+   return 0;
+}
+
+
+Online Portal Link: https://www.hackerrank.com/challenges/hello-world-c/problem?isFullScreen=true.
+
+-----------------------------------------------------------------------------------
+2) Write a simple program to read int, float, char and string using scanf() and display using printf() in all the above given platforms.
+Program-002:
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+	int n;
+	char ch;
+	float m;
+	char str[20];
+	scanf("%d",&n);
+	fflush(stdin);
+	scanf("%c%f%s",&ch,&m,str);
+	printf("n = %d\n",n);
+	printf("ch = %c\n",ch);
+	printf("m = %f\n",m);
+	printf("str = %s\n",str);
+	return 0;
+}
+
+Sample Input:
+3581
+M
+56000
+Srinu
+
+Sample Output:
+n = 3581
+ch = M
+m = 56000.000000
+str = Srinu
+
+------------------------------------------------------------------------------------
+WEEK-2:
+=======
+3) Program to find the Sum and Difference of 2 numbers
+Objective: Learn int and float data types. https://www.hackerrank.com/challenges/sum-numbersc/problem?isFullScreen=true
+
+Program-003:
+FileName: SumandDiff.C 
+#include<stdio.h>
+int main()
+{
+  int x,y;
+  scanf("%d%d",&x,&y);
+  printf("Sum of %d and %d is: %d\n",x,y,x+y);
+  printf("Difference between %d and %d is: %d\n",x,y,x-y);
+  return 0;
+}
+Sample Input:
+20 10
+
+Sample Output:
+Sum of 20 and 10 is: 30
+Difference between 20 and 10 is: 10
+
+
+
+-----------------------------------------------------------------------------------
+4) Playing with Characters
+Objective: Learn how to take a character, a string and a sentence as input in C. https://www.hackerrank.com/challenges/playing-withcharacters/problem?isFullScreen=true
+
+Program-004:
+FileName: InputDemo.C 
+#include<stdio.h>
+int main()
+{
+    char ch;
+    char word[100];
+    char words[100];
+    scanf("%c\n",&ch);
+    scanf("%s\n",word);
+    scanf("%[^\n]s",words);
+    printf("%c\n",ch);
+    printf("%s\n%s",word,words);
+    return 0;
+}
+Sample Input:
+C
+Language
+Welcome To C!!
+
+Sample Output:
+C
+Language
+Welcome To C!!
+
+-----------------------------------------------------------------------------------
+5) Bitwise Operators Objective: Learn how to work with bits (0,1) and bitwise operators. https://www.hackerrank.com/challenges/bitwise-operators-inc/problem?isFullScreen=true005
+
+Program-005:
+FileName:BitwiseOperators.C 
+
+#include <stdio.h>
+void calculate_the_maximum(int n, int k) {
+  //Write your code here.
+  int a=0,o=0,x=0;
+  for(int i=1;i<n;i++)
+  {
+      for(int j=i+1;j<=n;j++)
+      {
+          if((i&j)<k && (i&j)>a)
+             a=i&j;
+          if((i|j)<k && (i|j)>o)
+             o=i|j;
+          if((i^j)<k && (i^j)>x)
+             x=i^j;
+          printf("%d %d %d\n",a,o,x);
+      }
+  }
+   printf("%d\n%d\n%d",a,o,x);  
+}
+
+int main() {
+    int n, k;
+  
+    scanf("%d %d", &n, &k);
+    calculate_the_maximum(n, k);
+ 
+    return 0;
+}
+
+Sample Input:
+5 4
+
+Sample Output:
+2
+3
+3
+-------------------------------------------------------------------------------------
+6) Conversion of Fahrenheit to Celsius and vice versa.
+Program-006:
+FileName: TempConversion.C 
+
+#include <stdio.h>
+
+// Function to convert Fahrenheit to Celsius
+float fahrenheitToCelsius(float fahrenheit) 
+{
+    return (fahrenheit - 32) * 5 / 9;
+}
+
+// Function to convert Celsius to Fahrenheit
+float celsiusToFahrenheit(float celsius) 
+{
+    return (celsius * 9 / 5) + 32;
+}
+
+int main() 
+{
+    int choice;
+    float temperature, result;
+
+    // Menu for user selection
+    printf("Temperature Conversion Menu:\n");
+    printf("1. Convert Fahrenheit to Celsius\n");
+    printf("2. Convert Celsius to Fahrenheit\n");
+    printf("Enter your choice (1 or 2): ");
+    scanf("%d", &choice);
+
+    // Perform the selected conversion
+    switch (choice) 
+	{
+        case 1:
+            printf("Enter temperature in Fahrenheit: ");
+            scanf("%f", &temperature);
+            result = fahrenheitToCelsius(temperature);
+            printf("Temperature in Celsius: %.2f\n", result);
+            break;
+
+        case 2:
+            printf("Enter temperature in Celsius: ");
+            scanf("%f", &temperature);
+            result = celsiusToFahrenheit(temperature);
+            printf("Temperature in Fahrenheit: %.2f\n", result);
+            break;
+
+        default:
+            printf("Invalid choice. Please enter 1 or 2.\n");
+            break;
+    }
+
+    return 0;
+}
+
+Sample Output:
+Temperature Conversion Menu:
+1. Convert Fahrenheit to Celsius
+2. Convert Celsius to Fahrenheit
+Enter your choice (1 or 2): 1
+Enter temperature in Fahrenheit: 98.6
+Temperature in Celsius: 37.00
+
+------------------------------------------------------------------------------------ 
+7) Distance travelled by an object.
+calculate the distance traveled by an object using the formula:
+
+Distance = ut+(1/2)at^2
+ 
+Where:
+	u is the initial velocity (m/s),
+	t is the time (seconds),
+	a is the acceleration (m/s²).
+
+Program-007:
+FileName: Distance.C 
+#include <stdio.h>
+
+   // Function to calculate the distance traveled
+float calculateDistance(float initialVelocity, float time, float acceleration) 
+{
+    return (initialVelocity * time) + (0.5 * acceleration * time * time);
+}
+
+int main() 
+{
+    float initialVelocity, time, acceleration, distance;
+
+    // Input values from the user
+    printf("Enter the initial velocity (m/s): ");
+    scanf("%f", &initialVelocity);
+    printf("Enter the time (seconds): ");
+    scanf("%f", &time);
+    printf("Enter the acceleration (m/s^2): ");
+    scanf("%f", &acceleration);
+
+    // Calculate the distance
+    distance = calculateDistance(initialVelocity, time, acceleration);
+
+    // Display the result
+    printf("The distance traveled by the object is: %.2f meters\n", distance);
+
+    return 0;
+}
+
+Sample Input:
+Enter the initial velocity (m/s): 5
+Enter the time (seconds): 10
+Enter the acceleration (m/s^2): 2
+
+Sample Output:
+The distance traveled by the object is: 150.00 meters
+
+-------------------------------------------------------------------------------------- 
+8) Calculate Simple interest and compound interest
+Program-008:
+FileName: Interest.C 
+
+Formulas to find interest:
+Simple Interest = (P x T x R)/100
+Compound Interest = P x (1+R/100)^T - P
+
+
+#include <stdio.h>
+#include <math.h> // Required for pow() function
+
+// Function to calculate Simple Interest
+float calculateSimpleInterest(float principal, float rate, float time) 
+{
+    return (principal * rate * time) / 100;
+}
+
+// Function to calculate Compound Interest
+float calculateCompoundInterest(float principal, float rate, float time) 
+{
+    return principal * pow((1 + rate / 100), time) - principal;
+}
+
+int main() 
+{
+    float principal, rate, time, simpleInterest, compoundInterest;
+
+    // Input values from the user
+    printf("Enter the principal amount: ");
+    scanf("%f", &principal);
+    printf("Enter the rate of interest (in %% per annum): ");
+    scanf("%f", &rate);
+    printf("Enter the time (in years): ");
+    scanf("%f", &time);
+
+    // Calculate Simple Interest
+    simpleInterest = calculateSimpleInterest(principal, rate, time);
+
+    // Calculate Compound Interest
+    compoundInterest = calculateCompoundInterest(principal, rate, time);
+
+    // Display the results
+    printf("Simple Interest: %.2f\n", simpleInterest);
+    printf("Compound Interest: %.2f\n", compoundInterest);
+
+    return 0;
+}
+
+Sample Input:
+Enter the principal amount: 10000
+Enter the rate of interest (in % per annum): 5
+Enter the time (in years): 2
+
+Sample Output:
+Simple Interest: 1000.00
+Compound Interest: 1025.00
+
+
+-------------------------------------------------------------------------------------
+WEEK-3:
+9) Evaluate the following expressions 
+i. a/b*c-b+a*d/3 
+ii. j = (i++) + (++i)
+
+Program-009:
+FileName: Expressions.C 
+
+#include <stdio.h>
+
+int main() 
+{
+    // Variables for the first expression
+    int a, b, c, d, result1;
+
+    // Variables for the second expression
+    int i, j;
+
+    // Input values for the first expression
+    printf("Enter values for a, b, c, and d: ");
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+
+    // Evaluate the first expression: a/b*c - b + a*d/3
+    result1 = a / b * c - b + a * d / 3;
+    printf("Result of expression (a/b*c - b + a*d/3): %d\n", result1);
+
+    // Input value for i in the second expression
+    printf("Enter value for i: ");
+    scanf("%d", &i);
+
+    // Evaluate the second expression: j = (i++) + (++i)
+    j = (i++) + (++i);
+
+    // Display the results
+    printf("Value of j after evaluating (i++) + (++i): %d\n", j);
+    printf("Final value of i: %d\n", i);
+
+    return 0;
+}
+
+Sample Input:
+Enter values for a, b, c, and d: 12 4 3 6
+Enter value for i: 5
+
+Sample Output:
+Result of expression (a/b*c - b + a*d/3): 29
+Value of j after evaluating (i++) + (++i): 12
+Final value of i: 7
+
+-----------------------------------------------------------------------------------
+10) Square root of a given number. 
+Program-010:
+FileName: SquareRoot.C 
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int n;
+	double sq;
+	printf("Enter any number\n");
+	scanf("%d",&n);
+	sq=sqrt(n);
+	printf("Square Root of %d is: %.2lf",n,sq);
+	return 0;
+}
+
+Sample Input:
+Enter any number
+36
+Sample Output:
+Square Root of 36 is: 6.00
+
+---------------------------------------------------------------------------------
+11) Find the area of circle, square, rectangle and triangle.
+Program-011:
+FileName: Area.C 
+
+#include <stdio.h>
+#include <math.h> // For using pow() and M_PI
+
+// Function to calculate the area of a circle
+float areaOfCircle(float radius) 
+{
+    return M_PI * pow(radius, 2); // M_PI is a constant for pi
+}
+
+// Function to calculate the area of a square
+float areaOfSquare(float side) 
+{
+    return pow(side, 2);
+}
+
+// Function to calculate the area of a rectangle
+float areaOfRectangle(float length, float width) 
+{
+    return length * width;
+}
+
+// Function to calculate the area of a triangle
+float areaOfTriangle(float base, float height) 
+{
+    return 0.5 * base * height;
+}
+
+int main() 
+{
+    int choice;
+    float radius, side, length, width, base, height, area;
+
+    // Display menu for user selection
+    printf("Area Calculation Menu:\n");
+    printf("1. Circle\n");
+    printf("2. Square\n");
+    printf("3. Rectangle\n");
+    printf("4. Triangle\n");
+    printf("Enter your choice (1-4): ");
+    scanf("%d", &choice);
+
+    // Calculate area based on user's choice
+    switch (choice) 
+	{
+        case 1: // Circle
+            printf("Enter the radius of the circle: ");
+            scanf("%f", &radius);
+            area = areaOfCircle(radius);
+            printf("Area of the circle: %.2f\n", area);
+            break;
+
+        case 2: // Square
+            printf("Enter the side of the square: ");
+            scanf("%f", &side);
+            area = areaOfSquare(side);
+            printf("Area of the square: %.2f\n", area);
+            break;
+
+        case 3: // Rectangle
+            printf("Enter the length and width of the rectangle: ");
+            scanf("%f %f", &length, &width);
+            area = areaOfRectangle(length, width);
+            printf("Area of the rectangle: %.2f\n", area);
+            break;
+
+        case 4: // Triangle
+            printf("Enter the base and height of the triangle: ");
+            scanf("%f %f", &base, &height);
+            area = areaOfTriangle(base, height);
+            printf("Area of the triangle: %.2f\n", area);
+            break;
+
+        default: // Invalid choice
+            printf("Invalid choice! Please select a valid option (1-4).\n");
+    }
+
+    return 0;
+}
+
+Sample Input:
+Area Calculation Menu:
+1. Circle
+2. Square
+3. Rectangle
+4. Triangle
+Enter your choice (1-4): 1
+Enter the radius of the circle: 5
+
+Sample Output:
+Area of the circle: 78.54
+
+
+---------------------------------------------------------------------------------
+12) Find the maximum of three numbers using conditional operator.
+Program-012:
+FileName: BiggestofThreeNumbers.C 
+
+#include <stdio.h>
+int main() 
+{
+    int num1, num2, num3, max;
+
+    // Input three numbers from the user
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &num1, &num2, &num3);
+
+    // Using the conditional operator to find the maximum
+    max = (num1 > num2) ? ((num1 > num3) ? num1 : num3) : ((num2 > num3) ? num2 : num3);
+
+    // Display the maximum number
+    printf("The maximum of the three numbers is: %d\n", max);
+
+    return 0;
+}
+
+Sample Input:
+Enter three numbers: 12 25 9
+
+Sample Output:
+The maximum of the three numbers is: 25
+
+
+---------------------------------------------------------------------------------
+13) Take marks of 5 subjects in integers, find the total in integer and average in float.
+Program-013:
+FileName: AverageMarks.C 
+
+#include <stdio.h>
+
+int main() {
+    int sub1, sub2, sub3, sub4, sub5, total;
+    float average;
+
+    // Input marks for 5 subjects
+    printf("Enter marks for subject 1: ");
+    scanf("%d", &sub1);
+    printf("Enter marks for subject 2: ");
+    scanf("%d", &sub2);
+    printf("Enter marks for subject 3: ");
+    scanf("%d", &sub3);
+    printf("Enter marks for subject 4: ");
+    scanf("%d", &sub4);
+    printf("Enter marks for subject 5: ");
+    scanf("%d", &sub5);
+
+    // Calculate total and average
+    total = sub1 + sub2 + sub3 + sub4 + sub5;
+    average = total / 5.0; // Ensure the division is performed in float
+
+    // Display the results
+    printf("\nTotal Marks: %d\n", total);
+    printf("Average Marks: %.2f\n", average);
+
+    return 0;
+}
+
+Input:
+Enter marks for subject 1: 78
+Enter marks for subject 2: 85
+Enter marks for subject 3: 90
+Enter marks for subject 4: 88
+Enter marks for subject 5: 76
+Output:
+Total Marks: 417
+Average Marks: 83.40
+
+---------------------------------------------------------------------------------
+WEEK-4:
+======
+14) Conditional statements in C. Objective: Understand if and else. https://www.hackerrank.com/challenges/conditional-statements-inc/problem?isFullScreen=true 
+Program-014:
+FileName: SimpleIfElse.C 
+
+#include<stdio.h>
+int main() 
+{
+    int digit;
+    printf("Enter a digit:\n");
+    scanf("%d", &digit);
+     if (digit == 0) 
+	 {
+        printf("Zero ");
+     } 
+	 else if (digit == 1) 
+	 {
+        printf("One ");
+     } 
+	 else if (digit == 2) 
+	 {
+        printf("Two ");
+     } 
+	 else if (digit == 3) 
+	 {
+        printf("Three ");
+     } 
+	 else if (digit == 4) 
+	 {
+        printf("Four ");
+     } 
+	 else if (digit == 5) 
+	 {
+        printf("Five ");
+     } 
+	 else if (digit == 6) 
+	 {
+        printf("Six ");
+     } 
+	 else if (digit == 7) 
+	 {
+        printf("Seven ");
+     } 
+	 else if (digit == 8) 
+	 {
+        printf("Eight ");
+     } 
+	 else if (digit == 9) 
+	 {
+        printf("Nine ");
+     } 
+	 else 
+	 {
+        printf("Invalid Numebr\n");
+     }
+     return 0;
+}
+
+Sample Input:
+5
+Sample Output:
+Five
+
+
+
+-----------------------------------------------------------------------------------
+15) Roots of a Quadratic Equation.
+Program-015:
+FileName: RootsofQuadraticEquation.C  
+
+#include <stdio.h>
+#include <math.h>
+int main() 
+{
+    float a, b, c, discriminant, root1, root2, realPart, imaginaryPart;
+
+    // Input coefficients
+    printf("Enter coefficients a, b and c: ");
+    scanf("%f %f %f", &a, &b, &c);
+
+    if (a == 0) 
+	{
+        printf("This is not a quadratic equation (a cannot be zero).\n");
+        return 0;
+    }
+
+    // Calculate the discriminant
+    discriminant = b * b - 4 * a * c;
+
+    // Check the nature of the discriminant
+    if (discriminant > 0) 
+	{
+        // Two distinct real roots
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Roots are real and distinct:\n");
+        printf("Root 1 = %.2f\n", root1);
+        printf("Root 2 = %.2f\n", root2);
+    } 
+	else if (discriminant == 0) 
+	{
+        // One real root (double root)
+        root1 = -b / (2 * a);
+        printf("Roots are real and equal:\n");
+        printf("Root = %.2f\n", root1);
+    } 
+	else 
+	{
+        // Complex roots
+        realPart = -b / (2 * a);
+        imaginaryPart = sqrt(-discriminant) / (2 * a);
+        printf("Roots are complex and imaginary:\n");
+        printf("Root 1 = %.2f + %.2fi\n", realPart, imaginaryPart);
+        printf("Root 2 = %.2f - %.2fi\n", realPart, imaginaryPart);
+    }
+
+    return 0;
+}
+
+
+
+----------------------------------------------------------------------------------
+16) Generate electricity bill based on the following information.
+
+Input:
+Customer ID, Name, and the number of units consumed are taken as input.
+
+Rate Slabs:
+Units <= 100: ₹1.50 per unit.
+Units 101–300: ₹1.50 for the first 100 units + ₹2.00 per unit for the next 200 units.
+Units > 300: ₹1.50 for the first 100 units + ₹2.00 for the next 200 units + ₹3.00 for units above 300.
+
+Minimum Charge:
+If the calculated bill amount is less than ₹50, it is set to ₹50.
+
+Surcharge:
+If the bill amount exceeds ₹500, a 20% surcharge is added to the total.
+
+Program-016:
+FileName: FindElectricityBill.C 
+
+#include <stdio.h>
+int main() 
+{
+    int customerID;
+    char customerName[50];
+    float units, billAmount;
+
+    // Input customer details
+    printf("Enter Customer ID: ");
+    scanf("%d", &customerID);
+    printf("Enter Customer Name: ");
+    scanf("%s", customerName);
+    printf("Enter number of units consumed: ");
+    scanf("%f", &units);
+
+    // Calculate bill amount based on slab rates
+    if (units <= 100) 
+	{
+        billAmount = units * 1.50;
+    } 
+	else if (units <= 300) 
+	{
+        billAmount = 100 * 1.50 + (units - 100) * 2.00;
+    } 
+	else 
+	{
+        billAmount = 100 * 1.50 + 200 * 2.00 + (units - 300) * 3.00;
+    }
+
+    // Add a minimum bill amount check
+    if (billAmount < 50) 
+	{
+        billAmount = 50;  // Minimum charge
+    }
+
+    // Add a surcharge if bill amount exceeds 500
+    if (billAmount > 500) 
+	{
+        billAmount += billAmount * 0.20;  // 20% surcharge
+    }
+
+    // Display the bill
+    printf("\nElectricity Bill\n");
+    printf("---------------------------\n");
+    printf("Customer ID      : %d\n", customerID);
+    printf("Customer Name    : %s\n", customerName);
+    printf("Units Consumed   : %.2f\n", units);
+    printf("Total Bill Amount: Rs. %.2f\n", billAmount);
+
+    return 0;
+}
+
+Sample Input:
+Enter Customer ID: 101
+Enter Customer Name: Ramesh
+Enter number of units consumed: 50
+
+Sample Output:
+Electricity Bill
+---------------------------
+Customer ID      : 101
+Customer Name    : Ramesh
+Units Consumed   : 50.00
+Total Bill Amount: Rs. 75.00
+
+
+
+---------------------------------------------------------------------------------
+17) Simulate a calculator using switch case.
+Program-017:
+FileName: SimpleCalculator.C  
+
+#include <stdio.h>
+
+int main() 
+{
+    char operator;
+    double num1, num2, result;
+
+    // Input operator and numbers
+    printf("Enter an operator (+, -, *, /): ");
+    scanf(" %c", &operator); // Space before %c ensures no issues with trailing characters
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &num1, &num2);
+
+    // Perform calculation based on the operator
+    switch (operator) 
+	{
+        case '+':
+            result = num1 + num2;
+            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, result);
+            break;
+			
+        case '-':
+            result = num1 - num2;
+            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, result);
+            break;
+			
+        case '*':
+            result = num1 * num2;
+            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, result);
+            break;
+			
+        case '/':
+            if (num2 != 0) 
+			{
+                result = num1 / num2;
+                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, result);
+            } 
+			else 
+			{
+                printf("Error: Division by zero is not allowed.\n");
+            }
+            break;
+        default:
+            printf("Invalid operator. Please use +, -, *, or /.\n");
+    }
+
+    return 0;
+}
+
+Sample Input:
+Enter an operator (+, -, *, /): +
+Enter two numbers: 5 3
+
+Sample Output:
+5.00 + 3.00 = 8.00
+
+
+--------------------------------------------------------------------------------- 
+18) Find the given year is a leap year or not.
+Program-018:
+FileName: LeapYear.C 
+
+#include <stdio.h>
+int main() 
+{
+    int year;
+
+    // Input the year
+    printf("Enter a year: ");
+    scanf("%d", &year);
+
+    // Check if the year is a leap year
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) 
+	{
+        printf("%d is a leap year.\n", year);
+    } 
+	else 
+	{
+        printf("%d is not a leap year.\n", year);
+    }
+
+    return 0;
+}
+
+Sample Input:
+Enter a year: 2000
+
+Sample Output:
+2000 is a leap year.
+
+
+---------------------------------------------------------------------------------
+WEEK-5:
+=======
+19) Objective: Learn the usage of the for loop. https://www.hackerrank.com/challenges/for-loop-in-c/problem?isFullScreen=true 
+Task: Program to complete the following task by using for loops.
+For each integer n in the interval [a,b]  (given as input) :
+If 1<=n<=9, then print the English representation of it in lowercase. That is "one" for 1, "two" for 2 , and so on.
+Else if n>9 and it is an even number, then print "even".
+Else if n>9 and it is an odd number, then print "odd".
+
+Sample Input
+8
+11
+
+Sample Output
+eight
+nine
+even
+odd
+
+Program-019:
+FileName: LoopDemo.C 
+
+#include <stdio.h>
+int main() 
+{
+    int a, b;
+    scanf("%d\n%d", &a, &b);
+	
+    for(int i=a;i<=b;i++)
+    {
+        if(i<=9)
+        {
+            switch(i)
+            {
+                case 1: printf("one\n");
+                break;
+                case 2: printf("two\n");
+                break;
+                case 3: printf("three\n");
+                break;
+                case 4: printf("four\n");
+                break;
+                case 5: printf("five\n");
+                break;
+                case 6: printf("six\n");
+                break;
+                case 7: printf("seven\n");
+                break;
+                case 8: printf("eight\n");
+                break;
+                case 9: printf("nine\n");
+                break;
+            }
+        }
+        else 
+		{
+           if(i%2==0)
+				printf("even\n");
+           else 
+             printf("odd\n");
+        }
+        
+    }
+    return 0;
+}
+
+--------------------------------------------------------------------------------
+20) Sum of the digits of a 5-digit number. 
+Objective: Learn the usage of while loop and usage of operators - % and /. https://www.hackerrank.com/challenges/sum-of-digits-of-a-five-digitnumber/problem?isFullScreen=true
+Program-020:
+FileName: SumofDigits.C 
+/*Sum of digits of a given number */
+#include<stdio.h>
+int digits_Sum(int);  //function prototype
+int main()
+{
+	int n,sum;
+	scanf("%d",&n);
+	sum=digits_Sum(n);
+	printf("Sum of the digits of a given number %d is %d",n,sum);
+	return 0;
+}
+int digits_Sum(int m)
+{
+	int s=0,rem;
+	while(m>0)
+	{
+		rem=m%10;
+		s=s+rem;
+		m=m/10;
+	}
+	return s;
+}
+
+Sample Input:
+53698
+
+Sample Output:
+Sum of the digits of a given number 53698 is 31
+
+--------------------------------------------------------------------------------
+21) Program to find the given number is a prime or not. 
+Program-021:
+FileName: PrimeorNot.C 
+
+#include<stdio.h>
+int findFactors(int);
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	int fact_count=findFactors(n);
+	printf("\nFactors of given number %d is: %d\n",n,fact_count);
+	if(fact_count==2)
+	{
+		printf("Given number %d is PRIME  NUMBER",n);
+	}
+	else
+	{
+		printf("Given number %d is NOT A PRIME NUMBER",n);
+	}
+	return 0;
+}
+int findFactors(int m)
+{
+	int count=2,i;
+	printf("1 ");
+	for(i=2;i<=m/2;i++)
+	{
+		if(m%i==0)
+		 {
+		 	count++;
+		 }
+	}
+	printf("%d\n",m);
+	return count;
+}
+
+Sample Input:
+151
+
+Sample Output:
+Factors of given number 151 is: 2
+Given number 151 is PRIME  NUMBER
+
+-------------------------------------------------------------------------------
+22) Program to print the prime numbers between a given range.
+Program-022:
+FileName: PrimeNumbers.C 
+
+#include<stdio.h>
+int findFactors(int);
+int main()
+{
+	int x,y,i;
+	scanf("%d%d",&x,&y);
+	for(i=x;i<=y;i++)
+	{
+		int fact_count=findFactors(i);
+		if(fact_count==2)
+		   printf("%d ",i);
+	}	
+	return 0;
+}
+int findFactors(int m)
+{
+	int count=2,i;
+	for(i=2;i<=m/2;i++)
+	{
+		if(m%i==0)
+		 {
+		 	count++;
+		 }
+	}
+	return count;
+}
+
+Sample Input:
+100 1000
+
+Sample Output:
+101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541 547 557 563 569 571 577 587 593 599 601 607 613 617 619 631 641 643 647 653 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769 773 787 797 809 811 821 823 827 829 839 853 857 859 863 877 881 883 887 907 911 919 929 937 941 947 953 967 971 977 983 991 997
+------------------------------------------------------------------------------
+23) Program to find the given number is Armstrong Number or not.
+Program-023:
+FileName: Armstrong.C 
+
+Armstrong number: A number that is equal to the sum of its own digits raised to the power of the number of digits is called Armstrong Number.
+Examples:
+		153 	=> 1^3 + 5^3 + 3^3 => 1+125+27 => 153
+		371 	=> 3^3 + 7^3 + 1^3 => 27 + 343 + 1 => 371
+		9 		=> 9^1 => 9
+		1634 	=> 1^4 + 6^4 + 3^4 + 4^4 => 1634
+		
+#include<stdio.h>
+#include<math.h>
+int findArmStrongCalculation(int);
+int main()
+{
+	int n,res;
+	scanf("%d",&n);
+	res=findArmStrongCalculation(n);
+	if(n==res)
+	  printf("Given Number %d is Armstrong Number",n);
+	else
+	  printf("Given Number %d is Not a Armstrong Number",n);
+	return 0;
+}
+int findArmStrongCalculation(int n)
+{
+	int digits=(int)log10(n)+1;
+	int rem,sum=0;
+	while(n>0)
+	{
+		rem=n%10;
+		sum=sum+(int)pow(rem,digits);
+		n=n/10;
+	}
+	return sum;
+}
+
+
+
+-----------------------------------------------------------------------------
+24) Program to find the given number is Palindrome or not.
+Program-024:
+FileName: Palindrome.C 
+
+#include <stdio.h>
+
+int main() 
+{
+    int num, originalNum, reversedNum = 0, remainder;
+
+    // Input the number
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Store the original number
+    originalNum = num;
+
+    // Reverse the number
+    while (num != 0) 
+	{
+        remainder = num % 10;            			// Extract the last digit
+        reversedNum = reversedNum * 10 + remainder; // Build the reversed number
+        num /= 10;                      			// Remove the last digit
+    }
+
+    // Check if the original number and reversed number are the same
+    if (originalNum == reversedNum) 
+	{
+        printf("%d is a palindrome.\n", originalNum);
+    } 
+	else 
+	{
+        printf("%d is not a palindrome.\n", originalNum);
+    }
+    return 0;
+}
+
+Sample Input:
+Enter a number: 121
+
+Sample Output:
+121 is a palindrome.
+
+
+---------------------------------------------------------------------------
+25) Printing patterns using Loops. Objective: Print a pattern of numbers. https://www.hackerrank.com/challenges/printing-pattern2/problem?isFullScreen=true
+Program-025:
+FileName:PatternDemo.C 
+
+
+----------------------------------------------------------------------------
+26) Construct a Pyramid pattern.
+Program-026:
+FileName: PyramidPattern.C 
+
+#include <stdio.h>
+
+int main() 
+{
+    int n, i, j;
+
+    // Input the height of the pyramid
+    printf("Enter the number of rows:\n");
+    scanf("%d", &n);
+
+    // Outer loop to handle the number of rows (height of the pyramid)
+    for (i = 1; i <= n; i++) 
+	{
+        // Loop for spaces before the numbers
+        for (j = 1; j <= n - i; j++) 
+		{
+            printf(" ");
+        }
+
+        // Loop for printing numbers in the pyramid
+        for (j = 1; j <= (2 * i - 1); j++) 
+		{
+            printf("%d", i);
+        }
+
+        // Move to the next line after printing each row
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Sample Input:
+Enter the number of rows:
+5
+
+Sample Output:
+	1
+   222
+  33333
+ 4444444
+555555555
+
+---------------------------------------------------------------------------
+WEEK-6:Arrays
+=============
+27) 1D Arrays in C Objective: Print the sum and free the memory where the array is stored. https://www.hackerrank.com/challenges/1d-arrays-in-c/problem?isFullScreen=true 
+Program-027:
+FileName: ArrayDemo1.C 
+
+
+
+
+----------------------------------------------------------------------------
+28) Array reversal Objective: Working with indices in array https://www.hackerrank.com/challenges/reverse-array-c/problem?isFullScreen=true
+Program-028:
+FileName: ArrayDemo2.C
+
+
+
+----------------------------------------------------------------------------
+29) Search an element in array (Linear Search)
+Program-029:
+FileName: LinearSearch.C 
+
+
+
+---------------------------------------------------------------------------
+30) Find min and max elements in array
+Program-030:
+FileName: FindMinandMax.C 
+
+
+
+-----------------------------------------------------------------------------
+31) Insert an element into array
+Program-031:
+FileName: ElementInsertion.C  
+
+
+
+
+-----------------------------------------------------------------------------
+32) Eliminate duplicate elements from array
+Program-032:
+FileName: RemoveDuplicate.C 
+
+
+
+-----------------------------------------------------------------------------
+33) Sorting of elements in an array using Bubble sort
+Program-033:
+FileName: BubbleSort.C 
+
+
+
+
+-----------------------------------------------------------------------------
+WEEK-7:
+======
+34) Sum of two 2-D arrays
+Program-034:
+FileName: SumofArrays.C 
+
+
+
+
+------------------------------------------------------------------------------
+35) Multiplication of two 2-D arrays
+Program-035:
+FileName: Multiplication.C 
+
+
+
+------------------------------------------------------------------------------
+36) Transpose of a Matrix
+Program-036:
+FileName: Transpose.C 
+
+
+
+------------------------------------------------------------------------------ 
+37) Trace of a Matrix
+Program-037:
+FileName: TraceofMatrix.C 
+
+
+-----------------------------------------------------------------------------
+38) Print the Lower Triangular Matrix
+Program-038:
+FileName: LowerTriangularMatrix.C 
+
+
+
+
+------------------------------------------------------------------------------
+WEEK-8:
+=======
+
+39) Printing Tokens Objective: print each word of the sentence in a new line https://www.hackerrank.com/challenges/printing-tokens- /problem?isFullScreen=true
+Program-039:
+FileName:StringDemo.C 
+
+
+
+
+
+------------------------------------------------------------------------------
+40) Count number of alphabets (lowercase, uppercase, consonants, vowels) and digits 
+Program-040:
+FileName: CountofChars.C 
+
+
+
+------------------------------------------------------------------------------
+41) Lowercase to Uppercase, Uppercase to Lowercase, Toggle case, Sentential case 
+Program-041:
+FileName:CountofCases.C 
+
+
+
+-------------------------------------------------------------------------------- 
+42) Digit Frequency Objective: find the frequency of each digit in the given string. https://www.hackerrank.com/challenges/frequency-of-digits1/problem?isFullScreen=true 
+Program-042:
+FileName: DigitFrequency.C 
+
+
+
+--------------------------------------------------------------------------------
+43) Find string length, concatenate 2 strings, reverse a string using built-in and without built-in string functions.
+Program-043:
+FileName:StringOperations.C 
+
+
+
+--------------------------------------------------------------------------------
+WEEK-9: Functions in C 
+
+44) Objective: Learn simple usage of functions. https://www.hackerrank.com/challenges/functions-in-c/problem?isFullScreen=true 
+Program-044:
+FileName:FunctionDemo.C
+
+
+
+--------------------------------------------------------------------------------
+45) Fibonacci Numbers 
+Objective: Complete the recursive function. https://www.hackerrank.com/challenges/ctci-fibonacci-numbers/problem
+Program-045:
+FileName:Fibonacci.C 
+
+
+
+------------------------------------------------------------------------------
+46) Factorial 
+Objective: N! (N factorial) using recursion. https://www.hackerrank.com/contests/ccc-veltech-practice-setende/challenges/factorial-using-recursion-1 
+Program-046:
+FileName: Factorial.C 
+
+
+
+-----------------------------------------------------------------------------
+47) Digit Sum 
+Objective: find the super digit of the integer. https://www.hackerrank.com/challenges/recursive-digit-sum/problem 
+Program-047:
+FileName:DigitSum.C
+
+
+
+
+---------------------------------------------------------------------------
+48) Program to Calculate LCM
+Program-048:
+FileName: LCM.C 
+
+
+
+---------------------------------------------------------------------------
+49) Calculate the Nth term Objective: Find the Nth term. https://www.hackerrank.com/challenges/recursion-in-c/problem?isFullScreen=true
+Program-049:
+FileName: NthTerm.C 
+
+
+
+
+--------------------------------------------------------------------------
+WEEK-10:Pointers 
+================
+
+50) Pointers in C 
+Objective: learn to implement the basic functionalities of pointers in C. https://www.hackerrank.com/challenges/pointer-in-c/problem?isFullScreen=true
+Program-050:
+FileName: PointerDemo.C 
+
+
+
+----------------------------------------------------------------------------
+51) Students Marks Sum 
+Objective: Learn using Pointers with Arrays and Functions https://www.hackerrank.com/challenges/students-markssum/problem?isFullScreen=true
+Program-051:
+FileName:ArraysSum.C  
+
+
+
+
+-----------------------------------------------------------------------------
+52) Sorting Array of Strings 
+Objective: sort a given array of strings into lexicographically increasing order or into an order in which the string with the lowest length appears first. https://www.hackerrank.com/challenges/sorting-array-ofstrings/problem?isFullScreen=true
+Program-052:
+FileName: StringSorting.C 
+
+
+
+
+-----------------------------------------------------------------------------
+53) Find the sum of a 1D array using malloc()
+Program-053:
+FileName: ArraySum.C  
+
+
+
+---------------------------------------------------------------------------- 
+54) Swap two numbers using functions and pointers - call by value and reference.
+Program-054:
+FileName:Swapping.C  
+
+
+
+
+-----------------------------------------------------------------------------
+55) Dynamic Array in C 
+Objective: Handling requests by a Librarian to place the books in the shelves. https://www.hackerrank.com/challenges/dynamic-array-inc/problem?isFullScreen=true
+Program-055:
+FileName:DynamicArray.C 
+
+
+
+
+
+-----------------------------------------------------------------------------
+WEEK-11: Structure, Union, typedef, bit-fields and enum
+
+
+56) Write a C program to find the total, average of n students using structures
+Program-056:
+FileName: StructuresDemo1.C 
+
+
+------------------------------------------------------------------------------
+57) Boxes through a Tunnel
+Objective: Using a structure for transporting some boxes through a tunnel
+https://www.hackerrank.com/challenges/too-high-boxes/problem?isFullScreen=true
+Program-057:
+FileName: StructuresDemo2.C 
+
+
+
+
+-------------------------------------------------------------------------------
+58) Post Transition
+Objective: Storing and transferring packages using pointers in structures.
+https://www.hackerrank.com/challenges/post-transition/problem?isFullScreen=true
+Program-058:
+FileName: StructuresDemo3.C 
+
+
+
+
+-------------------------------------------------------------------------------
+WEEK 12:
+
+59) Copy one structure variable to another structure of the same type.
+Program-059:
+FileName: StructuresDemo4.C 
+
+
+
+-------------------------------------------------------------------------------
+60) Read student name and marks from the command line and display the student details along with the total.
+Program-060:
+FileName: Commandline1.C 
+
+
+
+------------------------------------------------------------------------------
+61) Shift/rotate using bitfields.
+Program-061:
+FileName: BitsRotate.C 
+
+
+
+
+
+-----------------------------------------------------------------------------
+
+
+
